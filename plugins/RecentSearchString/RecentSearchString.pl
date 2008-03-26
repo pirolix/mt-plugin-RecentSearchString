@@ -37,7 +37,7 @@ sub _hdlr_recent_search_strings {
             or return $ctx->error( $build->errstr );
         push @output, $out;
     }
-    join ',', @output;
+    join $args->{glue} || '' , @output;
 }
 
 MT::Template::Context->add_tag( SearchString => sub { $_[0]->stash('search_string') || '' });
